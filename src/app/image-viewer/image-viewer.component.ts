@@ -148,6 +148,11 @@ export class ImageViewerComponent implements OnInit {
     this.fullscreen = !this.fullscreen;
     if (!this.fullscreen) {
       this.reset();
+    }else{
+      this.style.transform = `translate(0px, 100px) rotate(0deg) scale(1.1)`;
+      this.style.msTransform = this.style.transform;
+      this.style.webkitTransform = this.style.transform;
+      this.style.oTransform = this.style.transform;
     }
   }
 
@@ -167,7 +172,11 @@ export class ImageViewerComponent implements OnInit {
     this.scale = 1;
     this.rotation = 0;
     this.translateX = 0;
-    this.translateY = 0;
+    if (!this.fullscreen) {
+      this.translateY = 0;
+    }else{
+      this.translateY = 100;
+    }
     this.updateStyle();
   }
 
